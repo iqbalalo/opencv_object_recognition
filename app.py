@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib as mpl
 mpl.use('TkAgg')
 from matplotlib import pyplot as plt
-import time
 import imutils
 
 
@@ -35,6 +34,11 @@ def opencv_image_shown_by_matplot(file):
 
 def video_capture():
     cap = cv2.VideoCapture(0)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_size = .6
+    font_color = (255, 255, 255)
+    font_thickness = 1
+    
 
     if cap:
         while True:
@@ -44,6 +48,8 @@ def video_capture():
             # Our operations on the frame come here
             # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             frame = imutils.resize(frame, width=640)
+
+            cv2.putText(frame, 'ALO', (10, 350), font, font_size, font_color, font_thickness, cv2.LINE_AA)
 
             # Display the resulting frame
             cv2.imshow('Camera 1', frame)
